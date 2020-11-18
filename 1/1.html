@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="what's new.css" rel="stylesheet">
+    <title>ข้อ1</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row pt-5">
+            <div class="card-deck">
+                <div class="card" style="width: 18rem;" id="img">
+                    <img id = "img1" class="card-img-top" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 id="text1" class="card-title"></h5>
+                    <p id="artist1" class="card-text"></p>
+                    <p id="release1" class="card-text"></p>
+                    <p id="avaliable1" class="card-text"></p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <img id = "img2" class="card-img-top" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 id="text2" class="card-title"></h5>
+                    <p id="artist2" class="card-text"></p>
+                    <p id="release2" class="card-text"></p>
+                    <p id="avaliable2" class="card-text"></p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <img id = "img3" class="card-img-top" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 id="text3" class="card-title"></h5>
+                    <p id="artist3" class="card-text"></p>
+                    <p id="release3" class="card-text"></p>
+                    <p id="avaliable3" class="card-text"></p>
+                    </div>
+                </div>
+            </div>
+            <script>
+                fetch('./ezquiz.json').then(element => element.json()).then(data =>{
+                    document.getElementById('img1').src = data.tracks.items[0].album.images[0].url;
+                    document.getElementById('img2').src = data.tracks.items[1].album.images[0].url;
+                    document.getElementById('img3').src = data.tracks.items[2].album.images[0].url;
+
+                    document.getElementById('text1').innerHTML = data.tracks.items[0].album.name;
+                    document.getElementById('text2').innerHTML = data.tracks.items[1].album.name;
+                    document.getElementById('text3').innerHTML = data.tracks.items[2].album.name;
+
+                    document.getElementById('artist1').innerHTML = "Artist : "+data.tracks.items[0].album.artists[0].name;
+                    document.getElementById('artist2').innerHTML = "Artist : "+data.tracks.items[1].album.artists[0].name;
+                    document.getElementById('artist3').innerHTML = "Artist : "+data.tracks.items[2].album.artists[0].name;
+
+                    document.getElementById('release1').innerHTML = "Release Date : "+data.tracks.items[0].album.release_date;
+                    document.getElementById('release2').innerHTML = "Release Date : "+data.tracks.items[1].album.release_date;
+                    document.getElementById('release3').innerHTML = "Release Date : "+data.tracks.items[2].album.release_date;
+
+                    document.getElementById('avaliable1').innerHTML = "Avaliable : "+data.tracks.items[0].album.available_markets.length+" countries";
+                    document.getElementById('avaliable2').innerHTML = "Avaliable : "+data.tracks.items[1].album.available_markets.length+" countries";
+                    document.getElementById('avaliable3').innerHTML = "Avaliable : "+data.tracks.items[2].album.available_markets.length+" countries";
+
+
+
+                });    
+            </script>
+        </div>
+    </div>
+</body>
+</html>
